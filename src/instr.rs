@@ -94,7 +94,7 @@ lazy_static! {
 }
 
 /// ABC, ABx, or AsBx.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum InstructionKind {
     ABC,
     ABx,
@@ -105,7 +105,7 @@ pub enum InstructionKind {
 /// instruction, including ABC, ABx and AsBx. The size of
 /// fields may not represent the actual number of bits on the
 /// serialized instruction.
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Instruction {
     pub op_code: OpCode,
     pub instruction_kind: InstructionKind,
