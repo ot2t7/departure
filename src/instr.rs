@@ -105,7 +105,7 @@ pub enum InstructionKind {
 /// instruction, including ABC, ABx and AsBx. The size of
 /// fields may not represent the actual number of bits on the
 /// serialized instruction.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct Instruction {
     pub op_code: OpCode,
     pub instruction_kind: InstructionKind,
@@ -156,7 +156,7 @@ pub fn make_instruction(op_code: OpCode, instruction_kind: InstructionKind) -> I
 /// An instance of this struct represents a deserialized function block
 /// that has been extracted from the inputted bytecode. Most fields are
 /// self explanatory
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Function {
     pub source_name: OsString,
     pub line_defined: Integer,
@@ -181,7 +181,7 @@ pub type Integer = i32;
 pub type Number = c_double;
 
 /// The is_vararg flag
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Vararg {
     HasArg,
     IsVararg,
@@ -189,7 +189,7 @@ pub enum Vararg {
 }
 
 /// A lua constant
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Constant {
     Nil,
     Boolean(Boolean),
@@ -198,7 +198,7 @@ pub enum Constant {
 }
 
 /// An entry in the debug local list 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Local {
     pub var_name: OsString,
     pub start_pc: Integer,
